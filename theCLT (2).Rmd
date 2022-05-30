@@ -1,0 +1,52 @@
+---
+title: "theCLE"
+author: "Dr. J"
+date: '2022-03-28'
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse)
+require(tigerstats)
+require(lattice)
+data("imagpop")
+```
+
+```{r}
+KK_data <- imagpop$kkardashtemp
+my1000 <- sample(KK_data, size = 1000, replace=T)
+densityplot(my1000,main="original data")
+
+```
+
+Describe the resulting plot -  is it unimodal?  How many peaks does it have?  Are all the peaks the same size? 
+
+Now take 2 random samples of 1000 points of the kkardashtemp variable and form 1000 points of their averages,
+
+```{r}
+numb = 2
+Kdata   <- sample(KK_data, size = numb*1000, replace=T)
+mdata  <-matrix(Kdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+densityplot(x.avg,main="sample size 2")
+```
+
+Describe the resulting plot -  is it unimodal?  How many peaks does it have?  Are all the peaks the same size? 
+
+ 
+
+Do this again for 4 random samples
+
+Then again for 9 random samples
+
+then 16 random samples
+
+finally for 36 random samples.
+
+Write a summary paragraph describing what you observed and how it relates to the central limit theorem.
+
+Be sure to comment on both the mean and standard deviation of the sample averages - the CLT makes a statement about what to expect from both.
+
+ 
+
+Then submit the link to your github project  to canvas to complete this assignment.

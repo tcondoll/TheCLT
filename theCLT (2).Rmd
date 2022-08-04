@@ -1,52 +1,224 @@
----
-title: "theCLE"
-author: "Dr. J"
-date: '2022-03-28'
+tile: "theCLT"
+
+author: "Taelynn Condoll"
+
+date: 'Summer 2022'
+
 output: html_document
 ---
 ```{r setup, include=FALSE}
+
+
 knitr::opts_chunk$set(echo = TRUE)
+
+
 require(tidyverse)
+
+
 require(tigerstats)
+
+
 require(lattice)
+
+
 data("imagpop")
+
+
 ```
 
 ```{r}
+
+
 KK_data <- imagpop$kkardashtemp
+
+
 my1000 <- sample(KK_data, size = 1000, replace=T)
+
+
 densityplot(my1000,main="original data")
 
+
+print(mean(KK_data))
+
+
+print(sd(KK_data))
+
+
 ```
 
-Describe the resulting plot -  is it unimodal?  How many peaks does it have?  Are all the peaks the same size? 
+Describe the resulting plot -  is it unimodal?  How many peaks does it have?  Are all the peaks the same size?  It is not unimodal because of the multiple peaks and it has 2 peaks. The peaks are not the same size.
 
-Now take 2 random samples of 1000 points of the kkardashtemp variable and form 1000 points of their averages,
+Our standard deviation is 41.7 and the mean is 50
+
+### Now take 2 random samples of 1000 points of the kkardashtemp variable and form 1000 points of their averages,
 
 ```{r}
+
+
 numb = 2
+
+
 Kdata   <- sample(KK_data, size = numb*1000, replace=T)
+
+
 mdata  <-matrix(Kdata,nrow=1000,ncol=numb)
+
+
 x.avg <- apply(mdata,1,mean)
+
+
 densityplot(x.avg,main="sample size 2")
+
+
+print(mean(x.avg))
+
+
+print(sd(x.avg))
+
+
 ```
 
-Describe the resulting plot -  is it unimodal?  How many peaks does it have?  Are all the peaks the same size? 
+Describe the resulting plot -  is it unimodal?  How many peaks does it have?  Are all the peaks the same size?   It is not unimodal because of the multiple peaks and it has 3 peaks. 2 peaks are the same size and one is bigger
 
- 
+The standard deviation is 30.2 and the new mean is 52.1
 
-Do this again for 4 random samples
+### Do this again for 4 random samples
 
-Then again for 9 random samples
+```{r}
 
-then 16 random samples
 
-finally for 36 random samples.
+numb = 4
 
-Write a summary paragraph describing what you observed and how it relates to the central limit theorem.
 
-Be sure to comment on both the mean and standard deviation of the sample averages - the CLT makes a statement about what to expect from both.
+Kdata   <- sample(KK_data, size = numb*1000, replace=T)
 
- 
 
-Then submit the link to your github project  to canvas to complete this assignment.
+mdata  <-matrix(Kdata,nrow=1000,ncol=numb)
+
+
+x.avg <- apply(mdata,1,mean)
+
+
+densityplot(x.avg,main="sample size 4")
+
+
+print(mean(x.avg))
+
+
+print(sd(x.avg))
+
+
+```
+
+It is not unimodal because of the multiple peaks and it has 3 peaks. every peak is a different size.
+
+The standard deviation is 20.2 and the new mean is 50.
+
+### Then again for 9 random samples
+
+```{r}
+
+
+numb = 9
+
+
+Kdata   <- sample(KK_data, size = numb*1000, replace=T)
+
+
+mdata  <-matrix(Kdata,nrow=1000,ncol=numb)
+
+
+x.avg <- apply(mdata,1,mean)
+
+
+densityplot(x.avg,main="sample size 9")
+
+
+print(mean(x.avg))
+
+
+print(sd(x.avg))
+
+
+```
+
+It is not unimodal because of the multiple peaks and it has 2 peaks. 2 peaks are different sizes.
+
+The standard deviation is 13.7 and the new mean is 50.8
+
+### Then 16 random samples
+
+```{r}
+
+
+numb = 16
+
+
+Kdata   <- sample(KK_data, size = numb*1000, replace=T)
+
+
+mdata  <-matrix(Kdata,nrow=1000,ncol=numb)
+
+
+x.avg <- apply(mdata,1,mean)
+
+
+densityplot(x.avg,main="sample size 16")
+
+
+print(mean(x.avg))
+
+
+print(sd(x.avg))
+
+
+```
+
+It is  unimodal because of the single peak and it has 1 peak. the peak is one size so yes they are all the same size
+
+
+The standard deviation is 10.7 and the new mean is 50.2
+
+
+### Finally for 36 random samples.
+
+```{r}
+
+
+numb = 36
+
+
+Kdata   <- sample(KK_data, size = numb*1000, replace=T)
+
+
+mdata  <-matrix(Kdata,nrow=1000,ncol=numb)
+
+
+x.avg <- apply(mdata,1,mean)
+
+
+densityplot(x.avg,main="sample size 36")
+
+
+print(mean(x.avg))
+
+
+print(sd(x.avg))
+
+
+```
+
+It is  unimodal because of the single peak and it has 1 peak. the peak is one size so yes they are all the same size
+
+The standard deviation is 7.1 and the new mean is 50.1
+
+
+### Write a summary paragraph describing what you observed and how it relates to the central limit theorem.
+
+The middle of the graph where the peak is seems to be more heavily populated than the outsides of the graph. The population data seems to be more centralized as the sample size grew.
+
+### Be sure to comment on both the mean and standard deviation of the sample averages - the CLT makes a statement about what to expect from both.
+
+The mean stays the same  due to the additional data evening itself out. The standard deviation gets smaller because the increased sample size makes the results more accurate.
+
+### Then submit the link to your github project  to canvas to complete this assignment.
